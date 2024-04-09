@@ -17,10 +17,14 @@ tester <- function(a,b,SMALL = 1e-6){expect_true(all(abs(a-b) < SMALL))}
 checker <- function(M,x,y,x1,y1){
     tester(ht(x)                , Conj(t(x)))
     tester(ht(x)                , t(Conj(x)))
-    tester(cprod(x,x1)           , ht(x) %*% x1)
+    tester(cprod(x)             , ht(x) %*% x)
+    tester(cprod(x,x1)          , ht(x) %*% x1)
+    tester(tcprod(x)            , x %*% ht(x))
+    tester(tcprod(x,x1)         , x %*% ht(x1))
     tester(quad.form(M,x)       , ht(x) %*% M %*% x)
     tester(quad.form(solve(M),x), ht(x) %*% solve(M) %*% x)
     tester(quad.3form(M,x,x1)   , ht(x) %*% M %*% x1)
+    tester(quad.3form.inv(M,x,x1)   , ht(x) %*% solve(M) %*% x1)
     tester(quad.3tform(M,y,y1)  , y %*% M %*% ht(y1))
     tester(quad.tform(M,y)      , y %*% M %*% ht(y))
     tester(quad.tform.inv(M,y)  , y %*% solve(M) %*% ht(y))
@@ -32,18 +36,32 @@ checker <- function(M,x,y,x1,y1){
     tester(quad.3diag(M,x,x1)   , diag(quad.3form(M,x,x1)))
     tester(quad.3tdiag(M,y,y1)  , diag(y %*% M %*% ht(y1)))
     tester(quad.3tdiag(M,y,y1)  , diag(quad.3tform(M,y,y1)))
+
+    if(is.numeric(M)){# should be "is.real"
+        M <- cprod(M)
+        tester(quad.form(ht(chol(M)),x,chol=TRUE), ht(x) %*% M %*% x)
+    }
+
 }
 
-rcm <- function(row,col){ matrix(rnorm(row*col)+1i*rnorm(row*col),row,col)}
+mat_r <- function(row,col){ matrix(rnorm(row*col),row,col)}
+mat_c <- function(row,col){ matrix(rnorm(row*col)+1i*rnorm(row*col),row,col)}
 
 
 a <- 2
 b <- 3  # fails if b=1
-M <- rcm(a,a)
-x <- rcm(a,b)
-y <- rcm(b,a)
-x1 <- rcm(a,b)
-y1 <- rcm(b,a)
+M <- mat_r(a,a)
+x <- mat_r(a,b)
+y <- mat_r(b,a)
+x1 <- mat_r(a,b)
+y1 <- mat_r(b,a)
+checker(M,x,y,x1,y1)
+
+M <- mat_c(a,a)
+x <- mat_c(a,b)
+y <- mat_c(b,a)
+x1 <- mat_c(a,b)
+y1 <- mat_c(b,a)
 checker(M,x,y,x1,y1)
 
 
