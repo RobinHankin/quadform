@@ -21,23 +21,17 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 
-# Overview
-
 Quadratic forms are polynomials with all terms of degree 2.  Given a
-vector ${\mathbf x}=(x_1,\ldots,x_n)$ and an $n\times n$ matrix $M$
-the expression
+column vector ${\mathbf x}=(x_1,\ldots,x_n)^\top$ and an $n\times n$
+matrix $M$ then the function
+$f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ given by $f({\mathbf
+x})=x^TMx$ is a quadratic form; we extend to complex vectors by
+mapping ${\mathbf z}=(z_1,\ldots, z_n)^\top$ to ${\mathbf
+z}^*M{\mathbf z}$, where $z^*$ means the complex conjugate of $z^T$.
+These are implemented in the package with `quad.form(M,x)` which is
+essentially
 
-$$x^TMx$$
-
-is a quadratic expression; if $x$ is complex [we usually denote
-complex vectors with $z$] then we have
-
-$$z^*Mz$$
-
-where $z^*$ means the complex conjugate of $z^T$.  These are
-implemented in the package with `quad.form(M,x)` which is essentially
-
-`quad.form <- function(M,x){crossprod(crossprod(M, Conj(x)), x)}`
+`quad.form <- function(M,x){crossprod(crossprod(M, Conj(x)), x)}.`
 
 This is preferable to `t(x) %*% M %*% x` on several grounds.  Firstly,
 it streamlines and simplifies code; secondly, it is more efficient;
@@ -50,15 +44,13 @@ The main motivation for the package is nicer code.  For example, the
 \[
 \left[H_x-H^\top A^{-1}U\right]^\top
 \left[H^\top\left(H^\top A^{-1}H\right)^{-1}H\right]
-\left[H_x-H^\top A^{-1}U\right]
+\left[H_x-H^\top A^{-1}U\right].
 \]
 
 Direct R idiom would be:
 
 ```
-  t(Hx - t(H) %*% solve(A) %*% U) %*%
-  t(H) %*% solve(t(H) %*% solve(A) %*% H) %*% H %*%
-  (Hx - t(H) %*% solve(A) %*% U)
+t(Hx - t(H) %*% solve(A) %*% U) %*%  t(H) %*% solve(t(H) %*% solve(A) %*% H) %*% H %*%  (Hx - t(H) %*% solve(A) %*% U)
 ```
 
 But `quadform` idiom is:
