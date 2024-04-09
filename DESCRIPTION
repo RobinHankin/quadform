@@ -1,9 +1,8 @@
 Package: quadform
 Type: Package
-Title: Efficient evaluation of quadratic forms
+Title: Efficient Evaluation of Quadratic Forms
 Version: 0.0-1
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
-VignetteBuilder: knitr
 Depends: R (>= 3.0.1)
 Suggests: knitr,rmarkdown,testthat
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
