@@ -122,10 +122,10 @@ ht(x)
     the complex conjugate of the transpose, sometimes written \eqn{x^*}
 
     \item Function \code{cprod(x,y)} returns \eqn{x^T y}{t(x) \%*\% y},
-    equivalent to \code{crossprod(Conj(x),y)}
+    equivalent to \code{crossprod(Conj(x),y)} [\code{cp()}]
     
     \item Function \code{tcprod(x,y)} returns \eqn{x y^T}{x \%*\% t(y)},
-    equivalent to \code{crossprod(x,Conj(y))}
+    equivalent to \code{crossprod(x,Conj(y))} [\code{tcp()}]
   }
    
   Note again that in the calls above, \dQuote{transpose} [that is,
