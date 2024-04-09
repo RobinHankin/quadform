@@ -1,4 +1,4 @@
-Quadratic forms in R: the quadform package
+Quadratic forms in R: the `quadform` package
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -31,7 +31,7 @@ in the package with `quad.form(M,x)` which is essentially
 This is preferable to `t(x) %*% M %*% x` on several grounds. Firstly, it
 streamlines and simplifies code; secondly, it is more efficient; and
 thirdly it handles the complex case consistently. The package includes
-similar funcationality for other related expressions.
+similar functionality for other related expressions.
 
 The package is maintained on
 [github](https://github.com/RobinHankin/quadform).
