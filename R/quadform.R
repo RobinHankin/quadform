@@ -56,3 +56,18 @@
 `quad.3diag` <- function(M,left,right){ colSums(crossprod(M, Conj(left)) * right) }
 
 `quad.3tdiag` <- function(M,left,right){ colSums(t(left) * tcprod(M, right)) }
+
+cp <- cprod
+tcp <- tcprod
+qf <- quad.form
+qfi <- quad.form.inv
+q3 <- quad.3form
+q3i <- quad.3form.inv
+
+q3t <- quad.3tform
+qt <- quad.tform
+qti <- quad.tform.inv
+qd <- quad.diag
+qtd <- quad.tdiag
+q3d <- quad.3diag
+q3td <- quad.3tdiag

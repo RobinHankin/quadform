@@ -14,8 +14,22 @@
 \alias{cprod}
 \alias{tcprod}
 \alias{ht}
+\alias{cp}
+\alias{tcp}
+\alias{qf}
+\alias{qfi}
+\alias{q3}
+\alias{q3i}
+\alias{q3t}
+\alias{qt}
+\alias{qti}
+\alias{qd}
+\alias{qtd}
+\alias{q3d}
+\alias{q3td}
+
 \title{Evaluate a quadratic form efficiently}
-\description{
+\description{\loadmathjax
   
   Given a square matrix \eqn{M} of size \eqn{n\times n}{n*n}, and a
   matrix \eqn{x} of size \eqn{n\times p}{n*p} (or a vector of length
@@ -115,9 +129,18 @@ ht(x)
     \eqn{n} rows and arbitrary number of columns}
 }
 \details{
-  The \dQuote{meat} of \code{quad.form()} for \code{chol=FALSE} is just
-  \code{crossprod(crossprod(M, x), x)}, and that of
-  \code{quad.form.inv()} is \code{crossprod(x, solve(M, x))}.
+
+  These various functions generally avoid taking needless expensive
+  transposes in favour of using nested \code{crossprod()} and
+  \code{tcrossprod()} calls.  For example, the \dQuote{meat} of
+  \code{quad.form()} is just \code{crossprod(crossprod(M,Conj(x)),x)}
+
+  Functions such as \code{quad.form.inv()} avoid taking a matrix
+  inverse.  The meat of \code{quad.form.inv()}, for example, is
+  \code{cprod(x, solve(M, x))}.  Many people have stated things like
+  \dQuote{Never invert a matrix unless absolutely necessary}.  But I
+  have \emph{never} seen a case where \code{quad.form.inv(M,x)} is
+  faster than \code{quad.form(solve(M),x)}.
   
   If the Cholesky decomposition of \code{M} is available, then
   \code{quad.form.chol()} and supplying \code{M.upper} should generally
@@ -125,6 +148,11 @@ ht(x)
   using \code{M} directly.  The time saving is negligible for matrices
   smaller than about \eqn{50\times 50}{50*50}, even if the overhead of
   computing \code{M.upper} is ignored.
+
+  Terse forms [\code{qf()} for \code{quad.form()}, \code{qti()} for
+  \code{qad.tform.inv()}, etc] are provided for the perl golfers among
+  us.
+
 
 }
 

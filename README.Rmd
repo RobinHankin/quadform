@@ -44,6 +44,38 @@ it streamlines and simplifies code; secondly, it is more efficient;
 and thirdly it handles the complex case consistently.  The package
 includes similar functionality for other related expressions.
 
+The main motivation for the package is nicer code.  For example, the
+`emulator` package has to manipulate the following expression:
+
+\[
+\left[H_x-H^\top A^{-1}U\right]^\top
+\left[H^\top\left(H^\top A^{-1}H\right)^{-1}H\right]
+\left[H_x-H^\top A^{-1}U\right]
+\]
+
+Direct R idiom would be:
+
+```
+  t(Hx - t(H) %*% solve(A) %*% U) %*%
+  t(H) %*% solve(t(H) %*% solve(A) %*% H) %*% H %*%
+  (Hx - t(H) %*% solve(A) %*% U)
+```
+
+But `quadform` idiom is:
+
+```
+quad.form(quad.form.inv(quad.form.inv(A,H),H), Hx - quad.3form.inv(A,H,U))
+```
+
+and in terse form becomes:
+
+```
+qf(qfi(qfi(A,H),H), Hx - q3fi(A,H,U))
+```
+
+
+which is certainly shorter, arguably more elegant, and possibly faster.
+
 The package is maintained on
 [github](https://github.com/RobinHankin/quadform).
 
