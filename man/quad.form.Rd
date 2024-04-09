@@ -39,70 +39,6 @@
   the transpose, also known as the Hermitian transpose.  This only
   matters when considering complex numbers).
   
-  \itemize{
-    \item Function \code{quad.form(M,x)} evaluates \eqn{x^TMx}{t(x)
-      \%*\% M \%*\% x} in an efficient manner
-    
-    \item Function \code{quad.form.inv(M,x)} returns \eqn{x^TM^{-1}x}{t(x)
-      \%*\% solve(M) \%*\% x} using an efficient method that avoids
-    inverting \eqn{M}
-    
-    \item Function \code{quad.tform(M,x)} returns \eqn{xMx^T}{x \%*\% A
-      \%*\% t(x)} using \code{tcrossprod()} without taking
-      a transpose
-
-    \item Function \code{quad.tform.inv(M,x)} returns \eqn{xM^{-1}x^T}{x
-      \%*\% solve(M) \%*\% t(x)}, although a single transpose is needed
-
-    \item Function \code{quad.3form(M,l,r)} returns \eqn{l^TMr}{t(l)
-      \%*\% M \%*\% r} using nested calls to \code{crossprod()}.  It's
-    no faster than calling \code{crossprod()} directly, but makes code
-    neater and less error-prone (IMHO)
-
-    \item Function \code{quad.3form.inv(M,l,r)} returns
-      \eqn{l^TM^{-1}r}{t(l) \%*\% solve(M) \%*\% r}
-
-    \item Function \code{quad.3tform(M,l,r)} returns \eqn{lMr^T}{l \%*\%
-      M \%*\% t(r)} using nested calls to \code{tcrossprod()}.  Again,
-    this is to make for neater code
-    
-    \item Function \code{quad.diag(M,x)} returns the \emph{diagonal} of
-    the (potentially very large) square matrix \code{quad.form(M,x)}
-    without calculating the off diagonal elements
-    
-    \item Function \code{quad.tdiag(M,x)} similarly returns the diagonal of
-    \code{quad.tform(M,x)}
-
-    \item Function \code{quad.3diag(M,l,r)} returns the diagonal of
-    \code{quad.3form(M,l,r)} 
-
-    \item Function \code{quad.3tdiag(M,l,r)} returns the diagonal of
-    \code{quad.3tform(M,l,r)} 
-
-    \item Function \code{quad.form.chol()} interprets argument
-    \code{chol} as the lower triangular Cholesky decomposition of the
-    quadratic form.  Remember that \code{M.lower \%*\% M.upper == M},
-    and \code{chol()} returns the upper triangular matrix, so one needs
-    to use the transpose \code{t(chol(M))} in calls.
-    }
-    
-  These functions invoke the following lower-level calls:
-  
-  \itemize{
-    \item Function \code{ht(x)} returns the Hermitian transpose, that is,
-    the complex conjugate of the transpose, sometimes written \eqn{x^*}
-
-    \item Function \code{cprod(x,y)} returns \eqn{x^T y}{t(x) \%*\% y},
-    equivalent to \code{crossprod(Conj(x),y)}
-    
-    \item Function \code{tcprod(x,y)} returns \eqn{x y^T}{x \%*\% t(y)},
-    equivalent to \code{crossprod(x,Conj(y))}
-  }
-   
-  Note again that in the calls above, \dQuote{transpose} [that is,
-  \eqn{x^T}{t(x)}] means \dQuote{Conjugate transpose}, or the Hermitian
-  transpose.
-  
 }
 \usage{
 quad.form(M, x)
@@ -130,6 +66,75 @@ ht(x)
 }
 \details{
 
+  \itemize{
+
+  \item Function \code{quad.form(M,x)} evaluates \eqn{x^TMx}{t(x) \%*\%
+    M \%*\% x} in an efficient manner [terse form \code{qf()}]
+    
+    \item Function \code{quad.form.inv(M,x)} returns
+      \eqn{x^TM^{-1}x}{t(x) \%*\% solve(M) \%*\% x} using an efficient
+      method that avoids inverting \eqn{M} [terse form \code{qfi()}]
+    
+    \item Function \code{quad.tform(M,x)} returns \eqn{xMx^T}{x \%*\% A
+      \%*\% t(x)} using \code{tcrossprod()} without taking
+      a transpose [\code{qt()}]
+
+    \item Function \code{quad.tform.inv(M,x)} returns \eqn{xM^{-1}x^T}{x
+      \%*\% solve(M) \%*\% t(x)}, although a single transpose is needed
+      [\code{qti()}]
+
+    \item Function \code{quad.3form(M,l,r)} returns \eqn{l^TMr}{t(l)
+      \%*\% M \%*\% r} using nested calls to \code{crossprod()}.  It's
+    no faster than calling \code{crossprod()} directly, but makes code
+    neater and less error-prone (IMHO) [\code{q3()}]
+
+    \item Function \code{quad.3form.inv(M,l,r)} returns
+      \eqn{l^TM^{-1}r}{t(l) \%*\% solve(M) \%*\% r} [\code{q3i()}]
+
+    \item Function \code{quad.3tform(M,l,r)} returns \eqn{lMr^T}{l \%*\%
+      M \%*\% t(r)} using nested calls to \code{tcrossprod()}.  Again,
+    this is to make for neater code [\code{q3t()}]
+    
+    \item Function \code{quad.diag(M,x)} returns the \emph{diagonal} of
+    the (potentially very large) square matrix \code{quad.form(M,x)}
+    without calculating the off diagonal elements [\code{qd()}]
+    
+    \item Function \code{quad.tdiag(M,x)} similarly returns the diagonal of
+    \code{quad.tform(M,x)} [\code{qtd()}]
+
+    \item Function \code{quad.3diag(M,l,r)} returns the diagonal of
+    \code{quad.3form(M,l,r)} [\code{q3d()}]
+
+    \item Function \code{quad.3tdiag(M,l,r)} returns the diagonal of
+    \code{quad.3tform(M,l,r)} [\code{q3td()}]
+
+    \item Function \code{quad.form.chol()} interprets argument
+    \code{chol} as the lower triangular Cholesky decomposition of the
+    quadratic form.  Remember that \code{M.lower \%*\% M.upper == M},
+    and \code{chol()} returns the upper triangular matrix, so one needs
+    to use the transpose \code{t(chol(M))} in calls.
+    }
+    
+  These functions invoke the following lower-level calls:
+  
+  \itemize{
+    \item Function \code{ht(x)} returns the Hermitian transpose, that is,
+    the complex conjugate of the transpose, sometimes written \eqn{x^*}
+
+    \item Function \code{cprod(x,y)} returns \eqn{x^T y}{t(x) \%*\% y},
+    equivalent to \code{crossprod(Conj(x),y)}
+    
+    \item Function \code{tcprod(x,y)} returns \eqn{x y^T}{x \%*\% t(y)},
+    equivalent to \code{crossprod(x,Conj(y))}
+  }
+   
+  Note again that in the calls above, \dQuote{transpose} [that is,
+  \eqn{x^T}{t(x)}] means \dQuote{Conjugate transpose}, or the Hermitian
+  transpose.
+  
+
+
+
   These various functions generally avoid taking needless expensive
   transposes in favour of using nested \code{crossprod()} and
   \code{tcrossprod()} calls.  For example, the \dQuote{meat} of
@@ -142,17 +147,16 @@ ht(x)
   have \emph{never} seen a case where \code{quad.form.inv(M,x)} is
   faster than \code{quad.form(solve(M),x)}.
   
-  If the Cholesky decomposition of \code{M} is available, then
-  \code{quad.form.chol()} and supplying \code{M.upper} should generally
+  If the Cholesky decomposition of \code{M} is available, then using
+  \code{quad.form.chol()} and supplying \code{chol((M)} should generally
   be faster (for large matrices) than calling \code{quad.form()} and
   using \code{M} directly.  The time saving is negligible for matrices
   smaller than about \eqn{50\times 50}{50*50}, even if the overhead of
-  computing \code{M.upper} is ignored.
+  computing the decomposition is ignored.
 
   Terse forms [\code{qf()} for \code{quad.form()}, \code{qti()} for
-  \code{qad.tform.inv()}, etc] are provided for the perl golfers among
+  \code{quad.tform.inv()}, etc] are provided for the perl golfers among
   us.
-
 
 }
 
