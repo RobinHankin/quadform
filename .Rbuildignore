@@ -3,3 +3,4 @@
 .gitignore
 README.Rmd
 README.html
+^inst/quadform_stickermaker.R$
