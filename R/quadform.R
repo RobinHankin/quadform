@@ -30,15 +30,12 @@
     }
 }
 
-`quad.form` <- function (M, x, chol = FALSE){
-    if (chol == FALSE) {
-        return(drop(crossprod(crossprod(M,Conj(x)),x)))
-    }
-    else {
-        jj <- cprod(M, x)
-        return(drop(cprod(jj, jj)))
-    }
+`quad.form.chol` <- function (chol, x){
+        jj <- cprod(chol, x)
+        drop(cprod(jj, jj))
 }
+
+`quad.form` <- function (M, x){ drop(crossprod(crossprod(M,Conj(x)),x)) }
 
 `quad.form.inv` <- function (M, x){ drop(cprod(x, solve(M, x))) }
 

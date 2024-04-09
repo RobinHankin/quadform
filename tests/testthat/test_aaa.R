@@ -38,10 +38,9 @@ checker <- function(M,x,y,x1,y1){
     tester(quad.3tdiag(M,y,y1)  , diag(quad.3tform(M,y,y1)))
 
     if(is.numeric(M)){# should be "is.real"
-        M <- cprod(M)
-        tester(quad.form(ht(chol(M)),x,chol=TRUE), ht(x) %*% M %*% x)
+        M <- cprod(M) # to ensure positive-definiteness
+        tester(quad.form.chol(ht(chol(M)),x), quad.form(M,x))
     }
-
 }
 
 mat_r <- function(row,col){ matrix(rnorm(row*col),row,col)}
