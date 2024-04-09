@@ -123,6 +123,11 @@ ht(x)
   computing \code{M.upper} is ignored.
 
 }
+
+\value{
+  Generally, return a (dropped) matrix, real or complex as appropriate
+}
+
 \author{Robin K. S. Hankin}
 
 \note{
