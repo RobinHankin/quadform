@@ -148,7 +148,7 @@ ht(x)
   faster than \code{quad.form(solve(M),x)}.
   
   If the Cholesky decomposition of \code{M} is available, then using
-  \code{quad.form.chol()} and supplying \code{chol((M)} should generally
+  \code{quad.form.chol()} and supplying \code{chol(M)} should generally
   be faster (for large matrices) than calling \code{quad.form()} and
   using \code{M} directly.  The time saving is negligible for matrices
   smaller than about \eqn{50\times 50}{50*50}, even if the overhead of
