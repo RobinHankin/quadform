@@ -36,7 +36,7 @@ bmp(file="quadform_icon.bmp",bg="#7733FF",width=2000,height=1500)
 plotter()
 dev.off()
 
-sticker("quadform_icon.bmp", package="quadform", p_size=28, s_x=1, s_y=1,
+sticker("quadform_icon.bmp", package="quadform", p_size=28, s_x=1, s_y=0.99,
         s_width=2,asp=sqrt(3)/2, white_around_sticker=TRUE, h_fill="#7733FF",
         h_color="#000000", filename="quadform.png")
 
