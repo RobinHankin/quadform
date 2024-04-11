@@ -11,6 +11,8 @@
 \alias{quad.tdiag}
 \alias{quad.3diag}
 \alias{quad.3tdiag}
+\alias{quad.trace}
+\alias{quad.ttrace}
 \alias{cprod}
 \alias{tcprod}
 \alias{ht}
@@ -27,6 +29,8 @@
 \alias{qtd}
 \alias{q3d}
 \alias{q3td}
+\alias{qtr}
+\alias{qttr}
 
 \title{Evaluate a quadratic form efficiently}
 \description{\loadmathjax
@@ -107,6 +111,14 @@ ht(x)
 
     \item Function \code{quad.3tdiag(M,l,r)} returns the diagonal of
     \code{quad.3tform(M,l,r)} [\code{q3td()}]
+
+    \item Function \code{quad.trace(M,x)} returns the trace of
+    \code{quad.form(M,x)}, that is
+    \eqn{\operatorname{tr}(x^TMx)}{omitted} [\code{qt()}]
+
+    \item Function \code{quad.ttrace(M,x)} returns the trace of
+    \code{quad.tform(M,x)}, that is
+    \eqn{\operatorname{tr}(xMx^T)}{omitted} [\code{qtt()}]
 
     \item Function \code{quad.form.chol()} interprets argument
     \code{chol} as the lower triangular Cholesky decomposition of the

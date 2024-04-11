@@ -57,6 +57,10 @@
 
 `quad.3tdiag` <- function(M,left,right){ colSums(t(left) * tcprod(M, right)) }
 
+`quad.trace` <- function(M,x){ sum(crossprod(M, Conj(x)) * x) }
+
+`quad.ttrace` <- function(M,x){ sum(tcrossprod(Conj(x), M) * x) }
+
 cp <- cprod
 tcp <- tcprod
 qf <- quad.form
@@ -71,3 +75,6 @@ qd <- quad.diag
 qtd <- quad.tdiag
 q3d <- quad.3diag
 q3td <- quad.3tdiag
+
+qtr <- quad.trace
+qttr <- quad.ttrace

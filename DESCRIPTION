@@ -1,7 +1,7 @@
 Package: quadform
 Type: Package
 Title: Efficient Evaluation of Quadratic Forms
-Version: 0.0-1
+Version: 0.0-2
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Depends: R (>= 3.0.1)
 Imports: mathjaxr

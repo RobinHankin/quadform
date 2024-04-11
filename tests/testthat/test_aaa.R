@@ -33,6 +33,10 @@ checker <- function(M,x,y,x1,y1){
     tester(quad.3diag(M,x,x1)   , diag(quad.3form(M,x,x1)))
     tester(quad.3tdiag(M,y,y1)  , diag(y %*% M %*% ht(y1)))
     tester(quad.3tdiag(M,y,y1)  , diag(quad.3tform(M,y,y1)))
+    tester(quad.trace(M,x)      , sum(quad.diag(M,x)))
+    tester(quad.ttrace(M,y)     , sum(quad.tdiag(M,y)))
+    tester(quad.trace(M,x)      , sum(diag(quad.form(M,x))))
+    tester(quad.ttrace(M,y)     , sum(diag(quad.tform(M,y))))
 
     if(is.numeric(M)){# should be "is.real"
         M <- cprod(M) # to ensure positive-definiteness
