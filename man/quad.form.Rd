@@ -67,67 +67,49 @@ ht(x)
 \details{
 
   \tabular{llll}{\cr
-  \code{quad.form(M,x)}\tab\mjeqn{\mathbf{x}^{\scriptscriptstyle T}M\mathbf{x}}{omitted}
-  \tab\code{t(x) \%*\% M \%*\% x}\tab \code{qf()}\cr
-  \code{quad.form.inv(M,x)}\tab\mjeqn{\mathbf{x}^{\scriptscriptstyle T}M^{-1}\mathbf{x}}{omitted}
-  \tab\code{t(x) \%*\% solve(M) \%*\% x}\tab\code{qfi()}\cr
-  \code{quad.tform(M,x)}\tab\mjeqn{\mathbf{x}M\mathbf{x}^{\scriptscriptstyle T}}{omitted}
-  \tab\code{x \%*\% A \%*\% t(x)}\tab\code{qt()}\cr
-  \code{quad.tform.inv(M,x)}\tab\mjeqn{\mathbf{x}M^{-1}\mathbf{x}^{\scriptscriptstyle T}}{omitted}
-  \tab\code{x \%*\% solve(M) \%*\% t(x)}\tab\code{qti()}\cr
-  \code{quad.3form(M,l,r)}\tab\mjeqn{\mathbf{l}^{\scriptscriptstyle T}M\mathbf{r}}{omitted}
-  \tab\code{t(l) \%*\% M \%*\% r}\tab\code{q3()}\cr
-  \code{quad.3form.inv(M,l,r)}\tab\mjeqn{\mathbf{l}^{\scriptscriptstyle T}M^{-1}\mathbf{r}}{omitted}
-  \tab\code{t(l) \%*\% solve(M) \%*\% r}\tab\code{q3i()}\cr
-  \code{quad.3tform(M,l,r)}\tab\mjeqn{\mathbf{l}M\mathbf{r}^{\scriptscriptstyle T}}{omitted}
-  \tab\code{l \%*\% M \%*\% t(r)}\tab\code{q3t()}\cr
-  \code{quad.diag(M,x)}\tab\mjeqn{\operatorname{diag}(\mathbf{x}^{\scriptscriptstyle T}M\mathbf{x})}{omitted}
-  \tab\code{diag(quad.form(M,x))}\tab\code{qd()}\cr
-  \code{quad.tdiag(M,x)}\tab\mjeqn{\operatorname{diag}(\mathbf{x}M\mathbf{x}^{\scriptscriptstyle T})}{omitted}
-  \tab\code{diag(quad.tform(M,x))}\tab\code{qtd()}\cr
-  \code{quad.3diag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}^{\scriptscriptstyle T}M\mathbf{r})}{omitted}
+  \code{ht(x)}\tab\mjeqn{\mathbf{x}^{*}=\overline{\mathbf{x}^{\scriptscriptstyle T}}}{omitted}
+  \tab\code{Conj(ht(x))}\tab\code{t(x)}\cr
+  \code{cprod(x,y)}\tab\mjeqn{\mathbf{x}^{*}\mathbf{y}}{omitted}
+  \tab\verb{ht(x) \%*\% y}\tab\code{cp()}\cr
+  \code{tcprod(x,y)}\tab\mjeqn{\mathbf{x}\mathbf{y}^{*}}{omitted}
+  \tab\verb{x \%*\% ht(y)}\tab\code{tcp()}\cr
+  \code{quad.form(M,x)}\tab\mjeqn{\mathbf{x}^{*}M\mathbf{x}}{omitted}
+  \tab\verb{ht(x) \%*\% M \%*\% x}\tab\code{qf()}\cr
+  \code{quad.form.inv(M,x)}\tab\mjeqn{\mathbf{x}^{*}M^{-1}\mathbf{x}}{omitted}
+  \tab\verb{ht(x) \%*\% solve(M) \%*\% x}\tab\code{qfi()}\cr
+  \code{quad.tform(M,x)}\tab\mjeqn{\mathbf{x}M\mathbf{x}^{*}}{omitted}
+  \tab\verb{x \%*\% A \%*\% ht(x)}\tab\code{qt()}\cr
+  \code{quad.tform.inv(M,x)}\tab\mjeqn{\mathbf{x}M^{-1}\mathbf{x}^{*}}{omitted}
+  \tab\verb{x \%*\% solve(M) \%*\% ht(x)}\tab\code{qti()}\cr
+  \code{quad.3form(M,l,r)}\tab\mjeqn{\mathbf{l}^{*}M\mathbf{r}}{omitted}
+  \tab\verb{t(l) \%*\% M \%*\% r}\tab\code{q3()}\cr
+  \code{quad.3form.inv(M,l,r)}\tab\mjeqn{\mathbf{l}^{*}M^{-1}\mathbf{r}}{omitted}
+  \tab\verb{t(l) \%*\% solve(M) \%*\% r}\tab\code{q3i()}\cr
+  \code{quad.3tform(M,l,r)}\tab\mjeqn{\mathbf{l}M\mathbf{r}^{*}}{omitted}
+  \tab\verb{l \%*\% M \%*\% t(r)}\tab\code{q3t()}\cr
+  \code{quad.diag(M,x)}\tab\mjeqn{\operatorname{diag}(\mathbf{x}^{*}M\mathbf{x})}{omitted}
+  \tab\verb{diag(quad.form(M,x))}\tab\code{qd()}\cr
+  \code{quad.tdiag(M,x)}\tab\mjeqn{\operatorname{diag}(\mathbf{x}M\mathbf{x}^{*})}{omitted}
+  \tab\verb{diag(quad.tform(M,x))}\tab\code{qtd()}\cr
+  \code{quad.3diag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}^{*}M\mathbf{r})}{omitted}
   \tab\code{diag(quad.3form(M,l,r))}\tab\code{q3d()}\cr
-  \code{quad.3tdiag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}M\mathbf{r}^{\scriptscriptstyle T})}{omitted}
+  \code{quad.3tdiag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}M\mathbf{r}^{*})}{omitted}
   \tab\code{diag(quad.3tform(M,l,r))}\tab\code{q3td()}\cr
-  \code{quad.trace(M,x)}\tab\mjeqn{\operatorname{tr}(\mathbf{x}^{\scriptscriptstyle T}M\mathbf{x})}{omitted}
+  \code{quad.trace(M,x)}\tab\mjeqn{\operatorname{tr}(\mathbf{x}^{*}M\mathbf{x})}{omitted}
   \tab\code{tr(quad.form(M,x))}\tab\code{qt()}\cr
-  \code{quad.ttrace(M,x)}\tab\mjeqn{\operatorname{tr}(\mathbf{x}M\mathbf{x}^{\scriptscriptstyle T})}{omitted}
+  \code{quad.ttrace(M,x)}\tab\mjeqn{\operatorname{tr}(\mathbf{x}M\mathbf{x}^{*})}{omitted}
   \tab\code{tr(quad.tform(M,x))}\tab\code{qtt()}
 }
 
-\strong{In the above, \mjeqn{x^{\scriptscriptstyle T}}{t(x)} denotes the
+\strong{In the above, \mjeqn{\mathbf{x}^{*}}{ht(x)} denotes the
   \strong{complex conjugate} of the transpose, also known as the
-  Hermitian transpose} (This only matters when considering complex
+  Hermitian transpose} (this only matters when considering complex
   numbers).
-
-Function \code{quad.form.chol()} interprets argument \code{chol} as the
-lower triangular Cholesky decomposition of the quadratic form.  Remember
-that \code{M.lower \%*\% M.upper == M}, and \code{chol()} returns the
-upper triangular matrix, so one needs to use the transpose
-\code{t(chol(M))} in calls.
-
-  
-  \itemize{
-
-    \item Function \code{ht(x)} returns the Hermitian transpose, that is,
-    the complex conjugate of the transpose, sometimes written \eqn{x^*}
-
-    \item Function \code{cprod(x,y)} returns \eqn{x^T y}{t(x) \%*\% y},
-    equivalent to \code{crossprod(Conj(x),y)} [\code{cp()}]
-    
-    \item Function \code{tcprod(x,y)} returns \eqn{x y^T}{x \%*\% t(y)},
-    equivalent to \code{crossprod(x,Conj(y))} [\code{tcp()}]
-  }
-   
-  Note again that in the calls above, \dQuote{transpose} [that is,
-  \eqn{x^T}{t(x)}] means \dQuote{Conjugate transpose}, or the Hermitian
-  transpose.
-
 
   These various functions generally avoid taking needless expensive
   transposes in favour of using nested \code{crossprod()} and
   \code{tcrossprod()} calls.  For example, the \dQuote{meat} of
-  \code{quad.form()} is just \code{crossprod(crossprod(M,Conj(x)),x)}
+  \code{quad.form()} is just \code{crossprod(crossprod(M,Conj(x)),x)}.
 
   Functions such as \code{quad.form.inv()} avoid taking a matrix
   inverse.  The meat of \code{quad.form.inv()}, for example, is
@@ -136,16 +118,21 @@ upper triangular matrix, so one needs to use the transpose
   have \emph{never} seen a case where \code{quad.form.inv(M,x)} is
   faster than \code{quad.form(solve(M),x)}.
   
-  If the Cholesky decomposition of \code{M} is available, then using
-  \code{quad.form.chol()} and supplying \code{chol(M)} should generally
-  be faster (for large matrices) than calling \code{quad.form()} and
-  using \code{M} directly.  The time saving is negligible for matrices
-  smaller than about \eqn{50\times 50}{50*50}, even if the overhead of
-  computing the decomposition is ignored.
+  Function \code{quad.form.chol()} interprets argument \code{chol} as
+  the lower triangular Cholesky decomposition of the quadratic form.
+  Remember that \code{M.lower \%*\% M.upper == M}, and \code{chol()}
+  returns the upper triangular matrix, so one needs to use the transpose
+  \code{t(chol(M))} in calls.  If the Cholesky decomposition of \code{M}
+  is available, then using \code{quad.form.chol()} and supplying
+  \code{chol(M)} should generally be faster (for large matrices) than
+  calling \code{quad.form()} and using \code{M} directly.  The time
+  saving is negligible for matrices smaller than about \eqn{50\times
+  50}{50*50}, even if the overhead of computing the decomposition is
+  ignored.
 
   Terse forms [\code{qf()} for \code{quad.form()}, \code{qti()} for
-  \code{quad.tform.inv()}, etc] are provided for the perl golfers among
-  us.
+  \code{quad.tform.inv()}, etc] are provided for the \proglang{perl}
+  golfers among us.
 
 }
 
