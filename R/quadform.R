@@ -1,32 +1,18 @@
-`ht` <- function(x){
-    if(is.complex(x)){
-        return(t(Conj(x)))
-    } else {
-        return(t(x))
-    }
-}
+`ht` <- function(x){ t(Conj(x)) }
 
 `cprod` <- function(x,y=NULL){
-    if(is.complex(x) | is.complex(y)){
-        if(is.null(y)){
-            return(crossprod(Conj(x),x))
-        } else {
-            return(crossprod(Conj(x),y))
-        }
+    if(is.null(y)){
+        return(crossprod(Conj(x),x))
     } else {
-        return(crossprod(x,y))
+        return(crossprod(Conj(x),y))
     }
 }
 
 `tcprod` <- function(x,y=NULL){
-    if(is.complex(x) | is.complex(y)){
-        if(is.null(y)){
-            return(tcrossprod(x,Conj(x)))
-        } else {
-            return(tcrossprod(x,Conj(y)))
-        }
+    if(is.null(y)){
+        return(tcrossprod(x,Conj(x)))
     } else {
-        return(tcrossprod(x,y))
+        return(tcrossprod(x,Conj(y)))
     }
 }
 
