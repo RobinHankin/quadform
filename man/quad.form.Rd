@@ -68,7 +68,7 @@ ht(x)
 
   \tabular{llll}{\cr
   \code{ht(x)}\tab\mjeqn{\mathbf{x}^{*}=\overline{\mathbf{x}^{\scriptscriptstyle T}}}{omitted}
-  \tab\code{Conj(ht(x))}\tab\code{t(x)}\cr
+  \tab\code{Conj(t(x))}\tab\code{ht(x)}\cr
   \code{cprod(x,y)}\tab\mjeqn{\mathbf{x}^{*}\mathbf{y}}{omitted}
   \tab\verb{ht(x) \%*\% y}\tab\code{cp()}\cr
   \code{tcprod(x,y)}\tab\mjeqn{\mathbf{x}\mathbf{y}^{*}}{omitted}
