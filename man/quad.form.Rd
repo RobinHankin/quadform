@@ -1,5 +1,6 @@
 \name{quad.form}
 \alias{quad.form}
+\alias{quadform}
 \alias{quad.form.inv}
 \alias{quad.form.chol}
 \alias{quad.3form}
