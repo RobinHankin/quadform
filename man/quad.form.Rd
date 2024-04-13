@@ -160,7 +160,6 @@ ht(x)
   
 }
 
-\seealso{\code{\link{optimize}}}
 \examples{
 jj <- matrix(rnorm(80),20,4)
 M <- crossprod(jj,jj)
