@@ -117,6 +117,14 @@ ht(x)
   \dQuote{Never invert a matrix unless absolutely necessary}.  But I
   have \emph{never} seen a case where \code{quad.form.inv(M,x)} is
   faster than \code{quad.form(solve(M),x)}.
+
+  One motivation for the package is to return consistent results with
+  complex arguments.  Note, for example, that
+  \code{base::crossprod(x,y)} evaluates \verb{t(x) \%*\% y} and not, as
+  one would almost always want, \verb{Conj(t(x)) \%*\% y}.  Function
+  \code{cprod()}, unlike \code{crossprod()}, is consistent and returns
+  \verb{Conj(t(x)) \%*\% y} [or \verb{ht(x) \%*\% y}]; internally it is
+  essentially \verb{crossprod(Conj(x), y)}.
   
   Function \code{quad.form.chol()} interprets argument \code{chol} as
   the lower triangular Cholesky decomposition of the quadratic form.
