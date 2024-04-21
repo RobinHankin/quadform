@@ -4,9 +4,13 @@
 \alias{quad.form.inv}
 \alias{quad.form.chol}
 \alias{quad.3form}
+\alias{quad.3form_ab}
+\alias{quad.3form_bc}
 \alias{quad.3form.inv}
 \alias{quad.tform}
 \alias{quad.3tform}
+\alias{quad.3tform_ab}
+\alias{quad.3tform_bc}
 \alias{quad.tform.inv}
 \alias{quad.diag}
 \alias{quad.tdiag}
@@ -138,6 +142,27 @@ ht(x)
   saving is negligible for matrices smaller than about \eqn{50\times
   50}{50*50}, even if the overhead of computing the decomposition is
   ignored.
+
+  Functions \code{quad.3form()} and \code{quad.3form_ab()} are helper
+  functions not really intended for the end-user.  They return
+  mathematically identical results but differ in the bracketing order of
+  their operations: \code{quad.3form_ab(M,l,r)} returns
+  \mjeqn{\left(\mathbf{l}^*M\right)\mathbf{r}}{omitted} and
+  \code{quad.3form_bc(M,l,r)} returns
+  \mjeqn{\mathbf{l}^{*}\left(M\mathbf{r}\right)}{omitted}.  The mnemonic
+  for their names is derived from the first multiplication when
+  calculating \mjseqn{(ab)c} and \mjseqn{a(bc)}.  Note that
+  \code{quad.3form_ab(M,l,r)} returns
+  \verb{crossprod(crossprod(M,Conj(l)),r)} rather than the
+  mathematically equivalent \verb{cprod(cprod(M,l),r)} on efficiency
+  grounds (only a single conjugate is taken).
+
+  Function \code{quad.3form()} dispatches to either
+  \code{quad.3form_ab()} or \code{quad.3form_bc()} depending on the
+  dimensions of its argument as per the efficiency discussion at
+  \code{inst/quadform3test.Rmd}.  Similar considerations apply to
+  \code{quad.3tform()}, \code{quad.3tform_ab()}, and
+  \code{quad.3tform_bc()}.
 
   Terse forms [\code{qf()} for \code{quad.form()}, \code{qti()} for
   \code{quad.tform.inv()}, etc] are provided for the \proglang{perl}
