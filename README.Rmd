@@ -56,7 +56,7 @@ t(Hx - t(H) %*% solve(A) %*% U) %*%  t(H) %*% solve(t(H) %*% solve(A) %*% H) %*%
 But `quadform` idiom is:
 
 ```
-quad.form(quad.form.inv(quad.form.inv(A,H),H), Hx - quad.3form.inv(A,H,U))
+quad.form(quad.form.inv(quad.form.inv(A,H),H), Hx - quad3.form.inv(A,H,U))
 ```
 
 and in terse form becomes:

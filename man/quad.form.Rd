@@ -3,19 +3,19 @@
 \alias{quadform}
 \alias{quad.form.inv}
 \alias{quad.form.chol}
-\alias{quad.3form}
-\alias{quad.3form_ab}
-\alias{quad.3form_bc}
-\alias{quad.3form.inv}
+\alias{quad3.form}
+\alias{quad3.form_ab}
+\alias{quad3.form_bc}
+\alias{quad3.form.inv}
 \alias{quad.tform}
-\alias{quad.3tform}
-\alias{quad.3tform_ab}
-\alias{quad.3tform_bc}
+\alias{quad3.tform}
+\alias{quad3.tform_ab}
+\alias{quad3.tform_bc}
 \alias{quad.tform.inv}
 \alias{quad.diag}
 \alias{quad.tdiag}
-\alias{quad.3diag}
-\alias{quad.3tdiag}
+\alias{quad3.diag}
+\alias{quad3.tdiag}
 \alias{quad.trace}
 \alias{quad.ttrace}
 \alias{cprod}
@@ -50,13 +50,13 @@ quad.form(M, x)
 quad.form.inv(M, x)
 quad.form.chol(chol,x)
 quad.tform(M, x)
-quad.3form(M,left,right)
-quad.3tform(M,left,right)
+quad3.form(M,left,right)
+quad3.tform(M,left,right)
 quad.tform.inv(M,x)
 quad.diag(M,x)
 quad.tdiag(M,x)
-quad.3diag(M,left,right)
-quad.3tdiag(M,left,right)
+quad3.diag(M,left,right)
+quad3.tdiag(M,left,right)
 cprod(x,y)
 tcprod(x,y)
 ht(x)
@@ -66,7 +66,7 @@ ht(x)
   \item{x,y}{Matrix of size \mjeqn{n\times p}{n*p}, or vector of length \mjseqn{n}}
   \item{chol}{Lower triangular Cholesky decomposition
     of the quadratic form, see details}
-  \item{left,right}{In function \code{quad.3form()}, matrices with
+  \item{left,right}{In function \code{quad3.form()}, matrices with
     \mjseqn{n} rows and arbitrary number of columns}
 }
 \details{
@@ -86,20 +86,20 @@ ht(x)
   \tab\verb{x \%*\% A \%*\% ht(x)}\tab\code{qt()}\cr
   \code{quad.tform.inv(M,x)}\tab\mjeqn{\mathbf{x}M^{-1}\mathbf{x}^{*}}{omitted}
   \tab\verb{x \%*\% solve(M) \%*\% ht(x)}\tab\code{qti()}\cr
-  \code{quad.3form(M,l,r)}\tab\mjeqn{\mathbf{l}^{*}M\mathbf{r}}{omitted}
+  \code{quad3.form(M,l,r)}\tab\mjeqn{\mathbf{l}^{*}M\mathbf{r}}{omitted}
   \tab\verb{t(l) \%*\% M \%*\% r}\tab\code{q3()}\cr
-  \code{quad.3form.inv(M,l,r)}\tab\mjeqn{\mathbf{l}^{*}M^{-1}\mathbf{r}}{omitted}
+  \code{quad3.form.inv(M,l,r)}\tab\mjeqn{\mathbf{l}^{*}M^{-1}\mathbf{r}}{omitted}
   \tab\verb{t(l) \%*\% solve(M) \%*\% r}\tab\code{q3i()}\cr
-  \code{quad.3tform(M,l,r)}\tab\mjeqn{\mathbf{l}M\mathbf{r}^{*}}{omitted}
+  \code{quad3.tform(M,l,r)}\tab\mjeqn{\mathbf{l}M\mathbf{r}^{*}}{omitted}
   \tab\verb{l \%*\% M \%*\% t(r)}\tab\code{q3t()}\cr
   \code{quad.diag(M,x)}\tab\mjeqn{\operatorname{diag}(\mathbf{x}^{*}M\mathbf{x})}{omitted}
   \tab\verb{diag(quad.form(M,x))}\tab\code{qd()}\cr
   \code{quad.tdiag(M,x)}\tab\mjeqn{\operatorname{diag}(\mathbf{x}M\mathbf{x}^{*})}{omitted}
   \tab\verb{diag(quad.tform(M,x))}\tab\code{qtd()}\cr
-  \code{quad.3diag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}^{*}M\mathbf{r})}{omitted}
-  \tab\code{diag(quad.3form(M,l,r))}\tab\code{q3d()}\cr
-  \code{quad.3tdiag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}M\mathbf{r}^{*})}{omitted}
-  \tab\code{diag(quad.3tform(M,l,r))}\tab\code{q3td()}\cr
+  \code{quad3.diag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}^{*}M\mathbf{r})}{omitted}
+  \tab\code{diag(quad3.form(M,l,r))}\tab\code{q3d()}\cr
+  \code{quad3.tdiag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}M\mathbf{r}^{*})}{omitted}
+  \tab\code{diag(quad3.tform(M,l,r))}\tab\code{q3td()}\cr
   \code{quad.trace(M,x)}\tab\mjeqn{\operatorname{tr}(\mathbf{x}^{*}M\mathbf{x})}{omitted}
   \tab\code{tr(quad.form(M,x))}\tab\code{qt()}\cr
   \code{quad.ttrace(M,x)}\tab\mjeqn{\operatorname{tr}(\mathbf{x}M\mathbf{x}^{*})}{omitted}
@@ -143,26 +143,26 @@ ht(x)
   50}{50*50}, even if the overhead of computing the decomposition is
   ignored.
 
-  Functions \code{quad.3form()} and \code{quad.3form_ab()} are helper
+  Functions \code{quad3.form()} and \code{quad3.form_ab()} are helper
   functions not really intended for the end-user.  They return
   mathematically identical results but differ in the bracketing order of
-  their operations: \code{quad.3form_ab(M,l,r)} returns
+  their operations: \code{quad3.form_ab(M,l,r)} returns
   \mjeqn{\left(\mathbf{l}^*M\right)\mathbf{r}}{omitted} and
-  \code{quad.3form_bc(M,l,r)} returns
+  \code{quad3.form_bc(M,l,r)} returns
   \mjeqn{\mathbf{l}^{*}\left(M\mathbf{r}\right)}{omitted}.  The mnemonic
   for their names is derived from the first multiplication when
   calculating \mjseqn{(ab)c} and \mjseqn{a(bc)}.  Note that
-  \code{quad.3form_ab(M,l,r)} returns
+  \code{quad3.form_ab(M,l,r)} returns
   \verb{crossprod(crossprod(M,Conj(l)),r)} rather than the
   mathematically equivalent \verb{cprod(cprod(M,l),r)} on efficiency
   grounds (only a single conjugate is taken).
 
-  Function \code{quad.3form()} dispatches to either
-  \code{quad.3form_ab()} or \code{quad.3form_bc()} depending on the
+  Function \code{quad3.form()} dispatches to either
+  \code{quad3.form_ab()} or \code{quad3.form_bc()} depending on the
   dimensions of its argument as per the efficiency discussion at
   \code{inst/quadform3test.Rmd}.  Similar considerations apply to
-  \code{quad.3tform()}, \code{quad.3tform_ab()}, and
-  \code{quad.3tform_bc()}.
+  \code{quad3.tform()}, \code{quad3.tform_ab()}, and
+  \code{quad3.tform_bc()}.
 
   Terse forms [\code{qf()} for \code{quad.form()}, \code{qti()} for
   \code{quad.tform.inv()}, etc] are provided for the \proglang{perl}

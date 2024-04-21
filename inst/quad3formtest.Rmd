@@ -1,5 +1,5 @@
 ---
-title: "quad.3form() speed tests"
+title: "quad3.form() speed tests"
 author: "Robin Hankin"
 output: html_document
 ---
@@ -152,12 +152,12 @@ ${\mathcal O}(n^{2.81})$.
 ## Associativity: order of multiplication
 
 ```{r showquad3form}
-quad.3form
+quad3.form
 ```
 
 
 We can see that, in evaluating $\mathbf{l}^*M\mathbf{r}$ function
-`quad.3form()` brackets on the left, as in $(\mathbf{l^*}
+`quad3.form()` brackets on the left, as in $(\mathbf{l^*}
 M)\mathbf{r}$ [as opposed to on the right,
 $\mathbf{l^*}(M\mathbf{r})$].  Is this important from a timing
 perspective?
@@ -193,12 +193,12 @@ r <- matrix(rcnorm(a*b),b,a)
 M <- matrix(rcnorm(b*b),b,b)
 l <- matrix(rcnorm(c*b),b,c)
 c(
-max(abs(quad.3form(M,l,r) - crossprod(crossprod(M,Conj(l)),r))),
-max(abs(quad.3form(M,l,r) - cprod(l,M) %*% r)),
-max(abs(quad.3form(M,l,r) - tcrossprod(crossprod(Conj(l),M),t(r)))),
-max(abs(quad.3form(M,l,r) - (ht(l) %*% M) %*% r)),
-max(abs(quad.3form(M,l,r) - ht(l) %*% (M %*% r))),
-max(abs(quad.3form(M,l,r) - cprod(l, (M %*% r))))
+max(abs(quad3.form(M,l,r) - crossprod(crossprod(M,Conj(l)),r))),
+max(abs(quad3.form(M,l,r) - cprod(l,M) %*% r)),
+max(abs(quad3.form(M,l,r) - tcrossprod(crossprod(Conj(l),M),t(r)))),
+max(abs(quad3.form(M,l,r) - (ht(l) %*% M) %*% r)),
+max(abs(quad3.form(M,l,r) - ht(l) %*% (M %*% r))),
+max(abs(quad3.form(M,l,r) - cprod(l, (M %*% r))))
 )
 ```
 
@@ -209,7 +209,7 @@ least up to numerical precision.  What about their run speeds?
 ```{r definetimef}
 timef <- function(M,l,r){
 c(
-ignore=unname(system.time(ig <- quad.3form(M,l,r))[3]),
+ignore=unname(system.time(ig <- quad3.form(M,l,r))[3]),
   a =  unname(system.time(ig <- crossprod(crossprod(M,Conj(l)),r))[3]), 
   b =  unname(system.time(ig <- cprod(l,M) %*% r)[3]), 
   c =  unname(system.time(ig <- tcrossprod(crossprod(Conj(l),M),t(r)))[3]), 

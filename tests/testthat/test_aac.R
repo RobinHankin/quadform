@@ -2,7 +2,7 @@
 
 ## Define a checker function, and call it at the end.  
 
-test_that("Test suite aac.R, quad.3tform()",{
+test_that("Test suite aac.R, quad3.tform()",{
 
 
 # First we need a helper function to create random complex matrices
@@ -12,9 +12,9 @@ test_that("Test suite aac.R, quad.3tform()",{
 tester <- function(a,b,SMALL = 1e-6){expect_true(all(abs(a-b) < SMALL))}
 
 checker_mat <- function(M,l,r){
-    tester(quad.3tform(M,l,r)    , l %*% M %*% ht(r))
-    tester(quad.3tform_ab(M,l,r) , quad.3tform(M,l,r))
-    tester(quad.3tform_bc(M,l,r) , quad.3tform(M,l,r))
+    tester(quad3.tform(M,l,r)    , l %*% M %*% ht(r))
+    tester(quad3.tform_ab(M,l,r) , quad3.tform(M,l,r))
+    tester(quad3.tform_bc(M,l,r) , quad3.tform(M,l,r))
 }
 
 mat_r <- function(row,col){ matrix(rnorm(row*col),row,col)}
