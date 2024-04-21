@@ -143,6 +143,11 @@ ht(x)
   50}{50*50}, even if the overhead of computing the decomposition is
   ignored.
 
+  Functions \code{quad3.foo()} take three arguments: a matrix \code{M}
+  and two other vectors \code{l} and \code{r} [or \code{left} and
+  \code{right}].  For these functions, \code{M} is not necessarily
+  square although of course the matrices have to be compatible.
+
   Functions \code{quad3.form()} and \code{quad3.form_ab()} are helper
   functions not really intended for the end-user.  They return
   mathematically identical results but differ in the bracketing order of
