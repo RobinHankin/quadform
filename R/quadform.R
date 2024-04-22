@@ -18,12 +18,12 @@
 
 `quad.form.chol` <- function (chol, x){
         jj <- cprod(chol, x)
-        drop(cprod(jj, jj))
+        cprod(jj, jj)
 }
 
-`quad.form` <- function (M, x){ drop(crossprod(crossprod(M,Conj(x)),x)) }
+`quad.form` <- function (M, x){ crossprod(crossprod(M,Conj(x)),x) }
 
-`quad.form.inv` <- function (M, x){ drop(cprod(x, solve(M, x))) }
+`quad.form.inv` <- function (M, x){ cprod(x, solve(M, x)) }
 
 `quad3.form_ab` <- function(M,left,right){ crossprod(crossprod(M, Conj(left)), right) }
 `quad3.form_bc` <- function(M,left,right){ cprod(left, (M %*% right)) }
@@ -35,7 +35,7 @@
     }
 }
 
-`quad3.form.inv` <- function(M,left,right){ drop(cprod(left, solve(M, right))) }
+`quad3.form.inv` <- function(M,left,right){ cprod(left, solve(M, right)) }
 
 `quad3.tform_ab` <- function(M,left,right){ tcprod(left %*% M,right)}
 `quad3.tform_bc` <- function(M,left,right){ tcrossprod(left, tcrossprod(Conj(right), M)) }
@@ -48,7 +48,7 @@
 }
 `quad.tform` <- function(M,x){ tcrossprod(x, tcrossprod(Conj(x), M)) }
 
-`quad.tform.inv` <- function(M,x){ drop(quad.form.inv(M, ht(x))) }
+`quad.tform.inv` <- function(M,x){ quad.form.inv(M, ht(x)) }
 
 `quad.diag` <- function(M,x){ colSums(crossprod(M, Conj(x)) * x) }
 
