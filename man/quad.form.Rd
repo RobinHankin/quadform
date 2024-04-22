@@ -44,6 +44,13 @@
   matrix \mjseqn{x} of size \mjeqn{n\times p}{n*p} (or a vector of length
   \mjseqn{n}), evaluate various quadratic forms.
 
+  The archetype is \code{quad.form(M,x)} for real or complex square
+  matrix \code{M} and vector or matrix \code{x}.  This evaluates
+  \verb{Conj(t(x)) \%*\% M \%*\% x} but using
+  \code{crossprod(crossprod(M,Conj(x)),x)} thus avoiding taking a
+  needless transpose.
+
+
 }
 \usage{
 quad.form(M, x)
