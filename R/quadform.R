@@ -28,6 +28,8 @@
 `quad3.form_ab` <- function(M,left,right){ crossprod(crossprod(M, Conj(left)), right) }
 `quad3.form_bc` <- function(M,left,right){ cprod(left, (M %*% right)) }
 `quad3.form` <- function(M,left,right){
+    left <- as.matrix(left)
+    right <- as.matrix(right)
     if(ncol(left) < ncol(right)){
         quad3.form_ab(M,left,right)
     } else {
