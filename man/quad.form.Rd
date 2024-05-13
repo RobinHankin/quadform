@@ -114,9 +114,8 @@ ht(x)
 }
 
 \strong{In the above, \mjeqn{\mathbf{x}^{*}}{ht(x)} denotes the
-  \strong{complex conjugate} of the transpose, also known as the
-  Hermitian transpose} (this only matters when considering complex
-  numbers).
+  \emph{complex conjugate} of the transpose, also known as the Hermitian
+  transpose} (this only matters when considering complex numbers).
 
   These various functions generally avoid taking needless expensive
   transposes in favour of using nested \code{crossprod()} and
