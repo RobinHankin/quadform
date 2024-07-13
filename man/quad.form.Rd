@@ -114,9 +114,8 @@ ht(x)
 }
 
 \strong{In the above, \mjeqn{\mathbf{x}^{*}}{ht(x)} denotes the
-  \strong{complex conjugate} of the transpose, also known as the
-  Hermitian transpose} (this only matters when considering complex
-  numbers).
+  \emph{complex conjugate} of the transpose, also known as the Hermitian
+  transpose} (this only matters when considering complex numbers).
 
   These various functions generally avoid taking needless expensive
   transposes in favour of using nested \code{crossprod()} and
@@ -155,7 +154,7 @@ ht(x)
   \code{right}].  For these functions, \code{M} is not necessarily
   square although of course the matrices have to be compatible.
 
-  Functions \code{quad3.form()} and \code{quad3.form_ab()} are helper
+  Functions \code{quad3.form_ab()} and \code{quad3.form_bc()} are helper
   functions not really intended for the end-user.  They return
   mathematically identical results but differ in the bracketing order of
   their operations: \code{quad3.form_ab(M,l,r)} returns
