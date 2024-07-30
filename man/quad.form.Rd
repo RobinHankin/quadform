@@ -38,11 +38,11 @@
 \alias{qttr}
 
 \title{Evaluate a quadratic form efficiently}
-\description{\loadmathjax
+\description{
   
-  Given a square matrix \mjseqn{M} of size \mjeqn{n\times n}{n*n}, and a
-  matrix \mjseqn{x} of size \mjeqn{n\times p}{n*p} (or a vector of length
-  \mjseqn{n}), evaluate various quadratic forms.
+  Given a square matrix \eqn{M} of size \eqn{n\times n}{n*n}, and a
+  matrix \eqn{x} of size \eqn{n\times p}{n*p} (or a vector of length
+  \eqn{n}), evaluate various quadratic forms.
 
   The archetype is \code{quad.form(M,x)} for real or complex square
   matrix \code{M} and vector or matrix \code{x}.  This evaluates
@@ -69,51 +69,51 @@ tcprod(x,y)
 ht(x)
 }
 \arguments{
-  \item{M}{Square matrix of size \mjeqn{n\times n}{n*n}}
-  \item{x,y}{Matrix of size \mjeqn{n\times p}{n*p}, or vector of length \mjseqn{n}}
+  \item{M}{Square matrix of size \eqn{n\times n}{n*n}}
+  \item{x,y}{Matrix of size \eqn{n\times p}{n*p}, or vector of length \eqn{n}}
   \item{chol}{Lower triangular Cholesky decomposition
     of the quadratic form, see details}
   \item{left,right}{In function \code{quad3.form()}, matrices with
-    \mjseqn{n} rows and arbitrary number of columns}
+    \eqn{n} rows and arbitrary number of columns}
 }
 \details{
 
   \tabular{llll}{\cr
-  \code{ht(x)}\tab\mjeqn{\mathbf{x}^{*}=\overline{\mathbf{x}^{\scriptscriptstyle T}}}{omitted}
+  \code{ht(x)}\tab\eqn{\mathbf{x}^{*}=\overline{\mathbf{x}^{\scriptscriptstyle T}}}{omitted}
   \tab\code{Conj(t(x))}\tab\code{ht(x)}\cr
-  \code{cprod(x,y)}\tab\mjeqn{\mathbf{x}^{*}\mathbf{y}}{omitted}
+  \code{cprod(x,y)}\tab\eqn{\mathbf{x}^{*}\mathbf{y}}{omitted}
   \tab\verb{ht(x) \%*\% y}\tab\code{cp()}\cr
-  \code{tcprod(x,y)}\tab\mjeqn{\mathbf{x}\mathbf{y}^{*}}{omitted}
+  \code{tcprod(x,y)}\tab\eqn{\mathbf{x}\mathbf{y}^{*}}{omitted}
   \tab\verb{x \%*\% ht(y)}\tab\code{tcp()}\cr
-  \code{quad.form(M,x)}\tab\mjeqn{\mathbf{x}^{*}M\mathbf{x}}{omitted}
+  \code{quad.form(M,x)}\tab\eqn{\mathbf{x}^{*}M\mathbf{x}}{omitted}
   \tab\verb{ht(x) \%*\% M \%*\% x}\tab\code{qf()}\cr
-  \code{quad.form.inv(M,x)}\tab\mjeqn{\mathbf{x}^{*}M^{-1}\mathbf{x}}{omitted}
+  \code{quad.form.inv(M,x)}\tab\eqn{\mathbf{x}^{*}M^{-1}\mathbf{x}}{omitted}
   \tab\verb{ht(x) \%*\% solve(M) \%*\% x}\tab\code{qfi()}\cr
-  \code{quad.tform(M,x)}\tab\mjeqn{\mathbf{x}M\mathbf{x}^{*}}{omitted}
+  \code{quad.tform(M,x)}\tab\eqn{\mathbf{x}M\mathbf{x}^{*}}{omitted}
   \tab\verb{x \%*\% A \%*\% ht(x)}\tab\code{qt()}\cr
-  \code{quad.tform.inv(M,x)}\tab\mjeqn{\mathbf{x}M^{-1}\mathbf{x}^{*}}{omitted}
+  \code{quad.tform.inv(M,x)}\tab\eqn{\mathbf{x}M^{-1}\mathbf{x}^{*}}{omitted}
   \tab\verb{x \%*\% solve(M) \%*\% ht(x)}\tab\code{qti()}\cr
-  \code{quad3.form(M,l,r)}\tab\mjeqn{\mathbf{l}^{*}M\mathbf{r}}{omitted}
+  \code{quad3.form(M,l,r)}\tab\eqn{\mathbf{l}^{*}M\mathbf{r}}{omitted}
   \tab\verb{t(l) \%*\% M \%*\% r}\tab\code{q3()}\cr
-  \code{quad3.form.inv(M,l,r)}\tab\mjeqn{\mathbf{l}^{*}M^{-1}\mathbf{r}}{omitted}
+  \code{quad3.form.inv(M,l,r)}\tab\eqn{\mathbf{l}^{*}M^{-1}\mathbf{r}}{omitted}
   \tab\verb{t(l) \%*\% solve(M) \%*\% r}\tab\code{q3i()}\cr
-  \code{quad3.tform(M,l,r)}\tab\mjeqn{\mathbf{l}M\mathbf{r}^{*}}{omitted}
+  \code{quad3.tform(M,l,r)}\tab\eqn{\mathbf{l}M\mathbf{r}^{*}}{omitted}
   \tab\verb{l \%*\% M \%*\% t(r)}\tab\code{q3t()}\cr
-  \code{quad.diag(M,x)}\tab\mjeqn{\operatorname{diag}(\mathbf{x}^{*}M\mathbf{x})}{omitted}
+  \code{quad.diag(M,x)}\tab\eqn{\operatorname{diag}(\mathbf{x}^{*}M\mathbf{x})}{omitted}
   \tab\verb{diag(quad.form(M,x))}\tab\code{qd()}\cr
-  \code{quad.tdiag(M,x)}\tab\mjeqn{\operatorname{diag}(\mathbf{x}M\mathbf{x}^{*})}{omitted}
+  \code{quad.tdiag(M,x)}\tab\eqn{\operatorname{diag}(\mathbf{x}M\mathbf{x}^{*})}{omitted}
   \tab\verb{diag(quad.tform(M,x))}\tab\code{qtd()}\cr
-  \code{quad3.diag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}^{*}M\mathbf{r})}{omitted}
+  \code{quad3.diag(M,l,r)}\tab\eqn{\operatorname{diag}(\mathbf{l}^{*}M\mathbf{r})}{omitted}
   \tab\code{diag(quad3.form(M,l,r))}\tab\code{q3d()}\cr
-  \code{quad3.tdiag(M,l,r)}\tab\mjeqn{\operatorname{diag}(\mathbf{l}M\mathbf{r}^{*})}{omitted}
+  \code{quad3.tdiag(M,l,r)}\tab\eqn{\operatorname{diag}(\mathbf{l}M\mathbf{r}^{*})}{omitted}
   \tab\code{diag(quad3.tform(M,l,r))}\tab\code{q3td()}\cr
-  \code{quad.trace(M,x)}\tab\mjeqn{\operatorname{tr}(\mathbf{x}^{*}M\mathbf{x})}{omitted}
+  \code{quad.trace(M,x)}\tab\eqn{\operatorname{tr}(\mathbf{x}^{*}M\mathbf{x})}{omitted}
   \tab\code{tr(quad.form(M,x))}\tab\code{qt()}\cr
-  \code{quad.ttrace(M,x)}\tab\mjeqn{\operatorname{tr}(\mathbf{x}M\mathbf{x}^{*})}{omitted}
+  \code{quad.ttrace(M,x)}\tab\eqn{\operatorname{tr}(\mathbf{x}M\mathbf{x}^{*})}{omitted}
   \tab\code{tr(quad.tform(M,x))}\tab\code{qtt()}
 }
 
-\strong{In the above, \mjeqn{\mathbf{x}^{*}}{ht(x)} denotes the
+\strong{In the above, \eqn{\mathbf{x}^{*}}{ht(x)} denotes the
   \emph{complex conjugate} of the transpose, also known as the Hermitian
   transpose} (this only matters when considering complex numbers).
 
@@ -158,11 +158,11 @@ ht(x)
   functions not really intended for the end-user.  They return
   mathematically identical results but differ in the bracketing order of
   their operations: \code{quad3.form_ab(M,l,r)} returns
-  \mjeqn{\left(\mathbf{l}^*M\right)\mathbf{r}}{omitted} and
+  \eqn{\left(\mathbf{l}^*M\right)\mathbf{r}}{omitted} and
   \code{quad3.form_bc(M,l,r)} returns
-  \mjeqn{\mathbf{l}^{*}\left(M\mathbf{r}\right)}{omitted}.  The mnemonic
+  \eqn{\mathbf{l}^{*}\left(M\mathbf{r}\right)}{omitted}.  The mnemonic
   for their names is derived from the first multiplication when
-  calculating \mjseqn{(ab)c} and \mjseqn{a(bc)}.  Note that
+  calculating \eqn{(ab)c} and \eqn{a(bc)}.  Note that
   \code{quad3.form_ab(M,l,r)} returns
   \verb{crossprod(crossprod(M,Conj(l)),r)} rather than the
   mathematically equivalent \verb{cprod(cprod(M,l),r)} on efficiency
