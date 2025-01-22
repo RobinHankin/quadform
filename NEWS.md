@@ -1,3 +1,7 @@
+# quadform 0.0-3
+
+- typo in docs (q3i -> qti)
+
 # quadform 0.0-2
 
 - reverse dependency workflow

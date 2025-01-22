@@ -73,7 +73,7 @@ q3i <- quad3.form.inv
 
 q3t <- quad3.tform
 qt <- quad.tform
-q3i <- quad.tform.inv
+qti <- quad.tform.inv
 qd <- quad.diag
 qtd <- quad.tdiag
 q3d <- quad3.diag
