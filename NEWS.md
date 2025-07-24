@@ -1,3 +1,8 @@
+# quadform 0.0-4
+
+- remove mathjax dependence
+- use of roxygen for exports
+
 # quadform 0.0-3
 
 - typo in docs (q3i -> qti)
