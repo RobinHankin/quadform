@@ -55,25 +55,25 @@
 \usage{
 quad.form(M, x)
 quad.form.inv(M, x)
-quad.form.chol(chol,x)
+quad.form.chol(chol, x)
 quad.tform(M, x)
-quad3.form(M,left,right)
-quad3.tform(M,left,right)
-quad.tform.inv(M,x)
-quad.diag(M,x)
-quad.tdiag(M,x)
-quad3.diag(M,left,right)
-quad3.tdiag(M,left,right)
-cprod(x,y)
-tcprod(x,y)
+quad3.form(M, left, right)
+quad3.tform(M, left, right)
+quad.tform.inv(M, x)
+quad.diag(M, x)
+quad.tdiag(M, x)
+quad3.diag(M, left, right)
+quad3.tdiag(M, left, right)
+cprod(x, y)
+tcprod(x, y)
 ht(x)
 }
 \arguments{
   \item{M}{Square matrix of size \eqn{n\times n}{n*n}}
-  \item{x,y}{Matrix of size \eqn{n\times p}{n*p}, or vector of length \eqn{n}}
+  \item{x, y}{Matrix of size \eqn{n\times p}{n*p}, or vector of length \eqn{n}}
   \item{chol}{Lower triangular Cholesky decomposition
     of the quadratic form, see details}
-  \item{left,right}{In function \code{quad3.form()}, matrices with
+  \item{left, right}{In function \code{quad3.form()}, matrices with
     \eqn{n} rows and arbitrary number of columns}
 }
 \details{
@@ -192,19 +192,19 @@ ht(x)
  These functions are used extensively in the \CRANpkg{emulator} and
  \CRANpkg{calibrator} packages, primarily in the interests of elegant
  code, but also speed.  For the problems I usually consider, the speedup
- (of \code{quad.form(M,x)} over \verb{t(x) \%*\% M \%*\% x}, say) is
+ (of \code{quad.form(M, x)} over \verb{t(x) \%*\% M \%*\% x}, say) is
  marginal at best.
   
 }
 
 \examples{
-jj <- matrix(rnorm(80),20,4)
-M <- crossprod(jj,jj)
+jj <- matrix(rnorm(80), 20, 4)
+M <- crossprod(jj, jj)
 M.lower <- t(chol(M))
-x <- matrix(rnorm(8),4,2)
+x <- matrix(rnorm(8), 4, 2)
 
 jj.1 <- t(x) \%*\% M \%*\% x
-jj.2 <- quad.form(M,x)
+jj.2 <- quad.form(M, x)
 jj.3 <- quad.form.chol(M.lower, x)
 print(jj.1)
 print(jj.2)
@@ -212,21 +212,21 @@ print(jj.3)
 
 
 ## Make two Hermitian positive-definite matrices:
-L <- matrix(c(1,0.1i,-0.1i,1),2,2)
+L <- matrix(c(1, 0.1i,-0.1i,1), 2, 2)
 LL <- diag(11)
 LL[2,1] <- -(LL[1,2] <- 0.1i)
 
-z <- matrix(rnorm(22) + 1i*rnorm(22),2,11)
+z <- matrix(rnorm(22) + 1i*rnorm(22), 2, 11)
 
-quad.diag(L,z)     # elements real because L is HPD
-quad.tdiag(LL,z)   # ditto
+quad.diag(L, z)     # elements real because L is HPD
+quad.tdiag(LL, z)   # ditto
 
 
 ## Now consider accuracy:
-quad.form(solve(M),x) - quad.form.inv(M,x)  # should be zero
-quad.form(M,x) - quad.tform(M,t(x))         # should be zero
-quad.diag(M,x) - diag(quad.form(M,x))       # should be zero
-diag(quad.form(L,z))   - quad.diag(L,z)     # should be zero
-diag(quad.tform(LL,z)) - quad.tdiag(LL,z)   # should be zero
+quad.form(solve(M), x) - quad.form.inv(M, x)  # should be zero
+quad.form(M, x) - quad.tform(M, t(x))         # should be zero
+quad.diag(M, x) - diag(quad.form(M, x))       # should be zero
+diag(quad.form(L, z))   - quad.diag(L, z)     # should be zero
+diag(quad.tform(LL, z)) - quad.tdiag(LL, z)   # should be zero
 }
 \keyword{array}
