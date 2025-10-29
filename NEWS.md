@@ -1,5 +1,6 @@
 # quadform 0.0-4
 
+- tragula example article
 - remove mathjax dependence
 - use of roxygen for exports
 

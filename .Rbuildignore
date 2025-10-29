@@ -4,6 +4,8 @@
 README.Rmd
 README.html
 ^inst/quadform_stickermaker.R$
+^inst/quadform_tragula.Rnw$
+^inst/quadform.bib$
 ^.github$
 ^.devcontainer$
 ^CODE_OF_CONDUCT.md$
