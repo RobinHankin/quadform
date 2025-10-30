@@ -15,14 +15,14 @@
 \author{Robin K. S. Hankin\orcid{https://orcid.org/0000-0001-5982-0415}\\ University of Stirling}
 \title{Quadratic forms in \proglang{R}: introducing the \pkg{quadform} package}
 
-\Shorttitle{The \pkg{weyl} package}
+\Shorttitle{The \pkg{quadform} package}
 
-%\VignetteIndexEntry{A vignette for the weyl package}
+%\VignetteIndexEntry{A vignette for the quadform package}
 %% for pretty printing and a nice hypersummary also set:
 %% \Plainauthor{Achim Zeileis, Second Author} %% comma-separated
 
-\Plaintitle{Quadratic forms in {R}: introducing the {weyl} package}
-\Shorttitle{The \pkg{weyl} package}
+\Plaintitle{Quadratic forms in {R}: introducing the {quadform} package}
+\Shorttitle{The \pkg{quadform} package}
 
 %% an abstract and keywords
 \Abstract{
@@ -71,26 +71,36 @@ email: \email{hankin.robin@gmail.com}
 \end{wrapfigure}
 
 Quadratic forms are polynomials with all terms of degree 2.  Given a
-column vector ${\mathbf x}=(x_1,\ldots,x_n)^\top$ and an $n\times n$
+column vector ${\mathbf x}=(x_1,\ldots,x_n)^{\top}$ and an $n\times n$
 matrix $M$ then the function
 $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ given by $f({\mathbf
-  x})=x^TMx$ is a quadratic form~\citep{gentle2024}; we extend to
+  x})=x^\top Mx$ is a quadratic form~\citep{gentle2024}; we extend to
 complex vectors by mapping ${\mathbf z}=(z_1,\ldots, z_n)^\top$ to
-${\mathbf z}^*M{\mathbf z}$, where $z^*$ means the complex conjugate
-of $z^T$.  These are implemented in the package with
-\code{quad.form(M,x)} which is essentially
+${\mathbf z}^*M{\mathbf z}$, where $\mathbf{z}^*$ means the complex
+conjugate of $\mathbf{z}^\top$, that is $\overline{\mathbf{z}}^\top$.
+These are implemented in the package with \code{quad.form(M, x)} which
+is essentially
 
 <<showquad.form, eval=FALSE>>=
 function(M,x){crossprod(crossprod(M, Conj(x)), x)}
 @ 
 
-Using \code{quad.form()} is preferable to \code{t(x) \%*\% M \%*\% x}
-on several grounds.  Firstly, it streamlines and simplifies code;
-secondly, it is more efficient; and thirdly it handles the complex
-case consistently: \code{crossprod(M,x)} evaluates \code{t(x) \%*\% M}
-and not \code{t(Conj(x)) \%*\% M}, as one would usually want.  The
-package includes similar functionality for other related expressions
-such as $\mathbf{x}^* M\mathbf{y}$ and $\mathbf{x}^*
+Using \code{quad.form(M, x)} is preferable to \code{t(x) \%*\% M \%*\%
+  x} on several grounds.  Firstly, it streamlines and simplifies code;
+secondly, it is more efficient; and thirdly, the package handles the
+complex case consistently in that matrix transposes become Hermitian
+transposes.  For example, \code{cprod(x, y)} returns \code{Conj(t(x))
+  \%*\% y}, as one would usually want---compare \code{crossprod(x, y)}
+which evaluates \code{t(x) \%*\% M}.  Note that \pkg{quadform}
+functions generally avoid \code{\%*\%} and use \code{crossprod()} and
+\code{tcrossprod()} whenever possible: \code{cprod()} is essentially
+\code{crossprod(Conj(x), y)}.  This general design principle ensures
+that if $M$ is Hermitian symmetric, \code{quad.form(M, x)} is real for
+any complex vector $\mathbf{x}$: \code{quad.form(M, x)} returns
+\code{Conj(t(x)) \%*\% M \%*\% x}.
+
+The package includes similar functionality for other related
+expressions such as $\mathbf{x}^* M\mathbf{y}$ and $\mathbf{x}^*
 M^{-1}\mathbf{x}$.  The package also has functionality for evaluating
 quadratic forms of matrices.  Given $M_{[n\times n]}$ and
 $\mathbf{x}_{[n\times k]}$, then $F=\mathbf{x}^*M\mathbf{x}$ is
@@ -135,9 +145,9 @@ package idiom & definition & base \proglang{R} idiom & terse form\\ \hline
   \code{quad.ttrace(M,x)} &  $\operatorname{tr}(\mathbf{x}M\mathbf{x}^{*})$
    & \code{tr(quad.tform(M,x))} & \code{qtt()}
   \end{tabular}
-  \caption{Quadratic\label{quadforms} forms.  Here, $\mathbf{x}^{*}$ denotes the
-    \emph{complex conjugate} of the transpose, also known as the Hermitian
-    transpose}
+  \caption{Quadratic\label{quadforms} forms.  Here, $\mathbf{x}^{*}$
+    consistently denotes the \emph{complex conjugate} of the
+    transpose, also known as the Hermitian transpose}
   \end{table}
 
 The main motivation for the package is nicer code.  For example, the
