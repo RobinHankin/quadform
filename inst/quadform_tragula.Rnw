@@ -74,12 +74,12 @@ Quadratic forms are polynomials with all terms of degree 2.  Given a
 column vector ${\mathbf x}=(x_1,\ldots,x_n)^{\top}$ and an $n\times n$
 matrix $M$ then the function
 $f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ given by $f({\mathbf
-  x})=x^\top Mx$ is a quadratic form~\citep{gentle2024}; we extend to
-complex vectors by mapping ${\mathbf z}=(z_1,\ldots, z_n)^\top$ to
-${\mathbf z}^*M{\mathbf z}$, where $\mathbf{z}^*$ means the complex
-conjugate of $\mathbf{z}^\top$, that is $\overline{\mathbf{z}}^\top$.
-These are implemented in the package with \code{quad.form(M, x)} which
-is essentially
+  x})=\mathbf{x}^\top M\mathbf{x}$ is a quadratic
+form~\citep{gentle2024}; we extend to complex vectors by mapping
+${\mathbf z}=(z_1,\ldots, z_n)^\top$ to ${\mathbf z}^*M{\mathbf z}$,
+where $\mathbf{z}^*$ means the complex conjugate of $\mathbf{z}^\top$,
+that is $\overline{\mathbf{z}}^\top$.  These are implemented in the
+package with \code{quad.form(M, x)} which is essentially
 
 <<showquad.form, eval=FALSE>>=
 function(M,x){crossprod(crossprod(M, Conj(x)), x)}
