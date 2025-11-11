@@ -184,17 +184,13 @@ ht(x)
 \value{
   Generally, return a (dropped) matrix, real or complex as appropriate
 }
-
 \author{Robin K. S. Hankin}
-
 \note{
-
  These functions are used extensively in the \CRANpkg{emulator} and
  \CRANpkg{calibrator} packages, primarily in the interests of elegant
  code, but also speed.  For the problems I usually consider, the speedup
  (of \code{quad.form(M, x)} over \verb{t(x) \%*\% M \%*\% x}, say) is
- marginal at best.
-  
+ marginal at best.  
 }
 
 \examples{
