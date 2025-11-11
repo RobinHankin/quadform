@@ -78,7 +78,7 @@ ht(x)
 }
 \details{
 
-  \tabular{llll}{\cr
+  \tabular{llll}{
   \code{ht(x)}\tab\eqn{\mathbf{x}^{*}=\overline{\mathbf{x}^{\scriptscriptstyle T}}}{omitted}
   \tab\code{Conj(t(x))}\tab\code{ht(x)}\cr
   \code{cprod(x,y)}\tab\eqn{\mathbf{x}^{*}\mathbf{y}}{omitted}
