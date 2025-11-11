@@ -10,15 +10,15 @@ Quadratic forms in R: the `quadform` package
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/quadform)](https://cran.r-project.org/package=quadform)
 <!-- badges: end -->
 
-Quadratic forms are polynomials with all terms of degree 2. Given a
-column vector ${\mathbf x}=(x_1,\ldots,x_n)^\top$ and an $n\times n$
-matrix $M$ then the function
-$f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ given by
-$f({\mathbf x})=x^TMx$ is a quadratic form; we extend to complex vectors
-by mapping ${\mathbf z}=(z_1,\ldots, z_n)^\top$ to
-${\mathbf z}^*M{\mathbf z}$, where $z^*$ means the complex conjugate of
-$z^T$. These are implemented in the package with `quad.form(M,x)` which
-is essentially
+Quadratic forms are polynomials with all terms of degree 2. Given a real
+column vector ${\mathbf x}=(x_1,\ldots,x_n)^\top$ and an $n\times
+n$ matrix $M$ then the function
+$f\colon\mathbb{R}^n\longrightarrow\mathbb{R}$ given by $f({\mathbf
+x})={\mathbf x}^\top M{\mathbf x}$ is a quadratic form; we extend to
+complex vectors by mapping ${\mathbf z}=(z_1,\ldots, z_n)^\top$ to
+${\mathbf z}^*M{\mathbf z}$, where ${\mathbf z}^*$ means the complex
+conjugate of ${\mathbf z}^\top$. These are implemented in the package
+with `quad.form(M,x)` which is essentially
 
 `quad.form <- function(M,x){crossprod(crossprod(M, Conj(x)), x)}.`
 
