@@ -13,4 +13,4 @@ on:
 
 jobs:
   check:
-    uses: ./workflow/.github/workflows/R-CMD-check.yaml@master
+    uses: ./.github/workflows/R-CMD-check.yaml@master
