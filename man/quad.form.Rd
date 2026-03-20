@@ -217,7 +217,6 @@ z <- matrix(rnorm(22) + 1i*rnorm(22), 2, 11)
 quad.diag(L, z)     # elements real because L is HPD
 quad.tdiag(LL, z)   # ditto
 
-
 ## Now consider accuracy:
 quad.form(solve(M), x) - quad.form.inv(M, x)  # should be zero
 quad.form(M, x) - quad.tform(M, t(x))         # should be zero
