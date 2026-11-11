@@ -14,11 +14,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# <img src="man/figures/quadform.png" width = "150" align="right" />
+# <img src="man/figures/logo.png" width = "150" align="right" />
 
 <!-- badges: start -->
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/quadform)](https://cran.r-project.org/package=quadform)
 <!-- badges: end -->
+
+
 
 
 Quadratic forms are polynomials with all terms of degree 2.  Given a

@@ -3,7 +3,7 @@ Quadratic forms in R: the `quadform` package
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src="man/figures/quadform.png" width = "150" align="right" />
+# <img src="man/figures/logo.png" width = "150" align="right" />
 
 <!-- badges: start -->
 

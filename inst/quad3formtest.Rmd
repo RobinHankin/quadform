@@ -12,7 +12,7 @@ set.seed(0)
 ```
 
 ```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
-knitr::include_graphics(system.file("help/figures/quadform.png", package = "quadform"))
+knitr::include_graphics(system.file("help/figures/logo.png", package = "quadform"))
 ```
 
 This short document discusses some timing issues for in the `quadform`
